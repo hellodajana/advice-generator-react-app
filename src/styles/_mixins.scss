@@ -1,0 +1,43 @@
+/// Copy text color
+/// @type Color
+$text-color: hsl(193, 38%, 86%) !default;
+
+/// Dark Blue
+/// @type Color
+$background-color: hsl(218, 23%, 16%) !default;
+
+/// Dark Grayish Blue
+/// @type Color
+$container-color: hsl(217, 19%, 24%) !default;
+
+/// Grayish Blue
+/// @type Color
+$grayish-blue: hsl(217, 19%, 38%) !default;
+
+/// Button and advice
+/// @type Color
+$neon-green: hsl(150, 100%, 66%) !default;
+
+/// Container's maximum width
+/// @type Length
+$max-width: 1180px !default;
+
+/// Mixin to manage responsive breakpoints
+/// @author Kitty Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
